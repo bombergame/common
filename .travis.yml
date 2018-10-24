@@ -6,7 +6,7 @@ before_script:
 - curl https://glide.sh/get | sh
 
 script:
-- go test ./...
+- make test
 
 after_success:
 - ${GOPATH}/bin/goveralls -coverprofile=coverage.out -service=travis-ci
