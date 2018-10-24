@@ -1,4 +1,4 @@
-package errors
+package errs
 
 const (
 	ServiceErrorMessage = "internal service error"
