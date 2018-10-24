@@ -1,2 +1,5 @@
 ### GoLang ###
 .idea
+
+### test ###
+/coverage.out

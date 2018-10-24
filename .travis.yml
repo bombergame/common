@@ -2,5 +2,11 @@ language: go
 go:
 - "1.11"
 
+before_script:
+- curl https://glide.sh/get | sh
+
 script:
-  go test ./...
+- go test ./...
+
+after_success:
+- ${GOPATH}/bin/goveralls -coverprofile=coverage.out -service=travis-ci

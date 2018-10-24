@@ -1,0 +1,4 @@
+package: github.com/bombergame/common
+import:
+- package: github.com/sirupsen/logrus
+  version: v1.1.1
