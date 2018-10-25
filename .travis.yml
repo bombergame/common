@@ -10,4 +10,4 @@ script:
 - make test
 
 after_success:
-- ${GOPATH}/bin/goveralls -coverprofile=coverage.out -service=travis-ci
+- ${GOPATH}/bin/goveralls -coverprofile=./test/coverage.out -service=travis-ci
