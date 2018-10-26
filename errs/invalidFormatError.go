@@ -1,5 +1,9 @@
 package errs
 
+const (
+	InvalidFormatErrorMessagePrefix = "invalid format: "
+)
+
 type InvalidFormatError struct {
 	ServiceError
 }
@@ -10,7 +14,7 @@ func NewInvalidFormatError(message string) error {
 
 func NewInvalidFormatInnerError(message string, innerErr error) error {
 	err := &InvalidFormatError{}
-	err.message = message
+	err.message = InvalidFormatErrorMessagePrefix + message
 	err.innerErr = innerErr
 	return err
 }
