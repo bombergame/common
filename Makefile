@@ -1,9 +1,9 @@
 all: test
 
 test:
-	mkdir test
+	mkdir _test
 	go test -v -race ./...
-	go test -v -covermode=count -coverprofile=./test/coverage.out ./...
+	go test -v -covermode=count -coverprofile=./_test/coverage.out ./...
 
 clean:
-	rm -rf ./test
+	rm -rf ./_test
