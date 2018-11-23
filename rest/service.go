@@ -28,7 +28,7 @@ func NewService(config Config, components Components) *Service {
 		config:     config,
 		components: components,
 		server: http.Server{
-			Addr: ":" + config.Port,
+			Addr: config.Host + ":" + config.Port,
 		},
 	}
 }
