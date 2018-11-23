@@ -19,7 +19,7 @@ func (srv *Service) withRecover(h http.Handler) http.Handler {
 	)
 }
 
-func (srv *Service) withLogs(h http.Handler) http.Handler {
+func (srv *Service) WithLogs(h http.Handler) http.Handler {
 	return http.HandlerFunc(
 		func(w http.ResponseWriter, r *http.Request) {
 			wr := &LoggingResponseWriter{
@@ -32,7 +32,7 @@ func (srv *Service) withLogs(h http.Handler) http.Handler {
 	)
 }
 
-func (srv *Service) withAuthRestrict(h http.Handler) http.Handler {
+func (srv *Service) WithAuth(h http.Handler) http.Handler {
 	return http.HandlerFunc(
 		func(w http.ResponseWriter, r *http.Request) {
 			userAgent, err := srv.ReadUserAgent(r)
