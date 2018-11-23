@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-func (srv *Service) withRecover(h http.Handler) http.Handler {
+func (srv *Service) WithRecover(h http.Handler) http.Handler {
 	return http.HandlerFunc(
 		func(w http.ResponseWriter, r *http.Request) {
 			defer func() {
