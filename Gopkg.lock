@@ -18,6 +18,19 @@
   version = "v1.0.1"
 
 [[projects]]
+  branch = "master"
+  digest = "1:aa3d8d42865c42626b5c1add193692d045b3188b1479f0a0a88690d21fe20083"
+  name = "github.com/mailru/easyjson"
+  packages = [
+    ".",
+    "buffer",
+    "jlexer",
+    "jwriter",
+  ]
+  pruneopts = "UT"
+  revision = "60711f1a8329503b04e1c88535f419d0bb440bff"
+
+[[projects]]
   digest = "1:3f53e9e4dfbb664cd62940c9c4b65a2171c66acd0b7621a1a6b8e78513525a52"
   name = "github.com/sirupsen/logrus"
   packages = ["."]
@@ -49,6 +62,7 @@
   analyzer-version = 1
   input-imports = [
     "bou.ke/monkey",
+    "github.com/mailru/easyjson",
     "github.com/sirupsen/logrus",
   ]
   solver-name = "gps-cdcl"
