@@ -71,21 +71,10 @@ type CORS struct {
 func (srv *Service) WithCORS(h http.Handler, cors CORS) http.Handler {
 	return http.HandlerFunc(
 		func(w http.ResponseWriter, r *http.Request) {
-			allowed := false
-			for _, origin := range cors.Origins {
-				if origin == r.Header.Get("Origin") {
-					allowed = true
-				}
-			}
-			if !allowed {
-				return
-			}
-
 			w.Header().Set("Access-Control-Allow-Origin", strings.Join(cors.Origins, ","))
 			w.Header().Set("Access-Control-Allow-Credentials", strconv.FormatBool(cors.Credentials))
 			w.Header().Set("Access-Control-Allow-Methods", strings.Join(cors.Methods, ","))
 			w.Header().Set("Access-Control-Allow-Headers", strings.Join(cors.Headers, ","))
-
 			h.ServeHTTP(w, r)
 		},
 	)
