@@ -4,9 +4,9 @@ import (
 	"github.com/bombergame/common/auth"
 	"github.com/bombergame/common/consts"
 	"github.com/bombergame/common/errs"
+	"github.com/bombergame/common/utils"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/mitchellh/mapstructure"
-	"math/rand"
 )
 
 const (
@@ -16,14 +16,14 @@ const (
 
 type TokenManager struct {
 	key        []byte
-	randSeqGen *randomSequenceGenerator
+	randSeqGen *utils.RandomSequenceGenerator
 }
 
 func NewTokenManager(key string) *TokenManager {
-	randSeqGen := newRandomSequenceGenerator()
+	randSeqGen := utils.NewRandomSequenceGenerator()
 
 	if key == consts.EmptyString {
-		key = randSeqGen.get(DefaultKeyLength)
+		key = randSeqGen.Next(DefaultKeyLength)
 	}
 
 	return &TokenManager{
@@ -36,7 +36,7 @@ func (m *TokenManager) CreateToken(info auth.UserInfo) (string, error) {
 	t := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
 		"profile_id": info.ProfileID,
 		"user_agent": info.UserAgent,
-		"rand_salt":  m.randSeqGen.get(DefaultSaltLength),
+		"rand_salt":  m.randSeqGen.Next(DefaultSaltLength),
 	})
 	return t.SignedString(m.key)
 }
@@ -74,27 +74,4 @@ func (m *TokenManager) ParseToken(token string) (*auth.UserInfo, error) {
 	}
 
 	return info, nil
-}
-
-type randomSequenceGenerator struct {
-	numRunes int
-	runes    []rune
-}
-
-func newRandomSequenceGenerator() *randomSequenceGenerator {
-	runes := []rune(`abcdefghijklmnopqrstuvwxyz1234567890@#$^&*()_-=+`)
-	return &randomSequenceGenerator{
-		runes:    runes,
-		numRunes: len(runes),
-	}
-}
-
-func (g *randomSequenceGenerator) get(keyLen int) string {
-	key := make([]rune, g.numRunes)
-
-	for i := range g.runes {
-		key[i] = g.runes[rand.Intn(g.numRunes)]
-	}
-
-	return string(key)
 }
