@@ -1,3 +1,5 @@
+required = ["github.com/mailru/easyjson"]
+
 [[constraint]]
   name = "github.com/sirupsen/logrus"
   version = "1.1.1"

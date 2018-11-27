@@ -63,6 +63,8 @@
   input-imports = [
     "bou.ke/monkey",
     "github.com/mailru/easyjson",
+    "github.com/mailru/easyjson/jlexer",
+    "github.com/mailru/easyjson/jwriter",
     "github.com/sirupsen/logrus",
   ]
   solver-name = "gps-cdcl"
