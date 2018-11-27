@@ -1,5 +1,7 @@
 package auth
 
+//go:generate easyjson
+
 import (
 	"github.com/bombergame/common/consts"
 	"github.com/bombergame/common/errs"
