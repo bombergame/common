@@ -6,6 +6,8 @@ import (
 
 const (
 	ExpireTimeFormat = time.RFC3339
+
+	DefaultTokenValidDuration = 15 * time.Minute
 )
 
 type TokenInfo struct {
