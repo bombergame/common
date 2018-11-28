@@ -4,6 +4,7 @@ import (
 	"github.com/bombergame/common/auth"
 	"github.com/bombergame/common/consts"
 	"testing"
+	"time"
 )
 
 func TestTokenManagerUnit(t *testing.T) {
@@ -13,8 +14,9 @@ func TestTokenManagerUnit(t *testing.T) {
 	}
 
 	info := auth.UserInfo{
-		ProfileID: 100,
-		UserAgent: "some-user-agent",
+		ProfileID:  100,
+		UserAgent:  "some-user-agent",
+		ExpireTime: time.Now().Format(auth.ExpireTimeFormat),
 	}
 
 	token, err := manager.CreateToken(info)
