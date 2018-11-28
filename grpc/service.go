@@ -8,22 +8,22 @@ import (
 )
 
 type Service struct {
-	Config     Config
-	Components Components
+	Config     ServiceConfig
+	Components ServiceComponents
 	Server     *grpc.Server
 }
 
-type Config struct {
+type ServiceConfig struct {
 	Host string
 	Port string
 }
 
-type Components struct {
+type ServiceComponents struct {
 	Logger      *logs.Logger
 	AuthManager auth.AuthenticationManager
 }
 
-func NewService(cf Config, cp Components) *Service {
+func NewService(cf ServiceConfig, cp ServiceComponents) *Service {
 	return &Service{
 		Config:     cf,
 		Components: cp,

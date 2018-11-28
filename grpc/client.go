@@ -6,12 +6,12 @@ import (
 )
 
 type Client struct {
-	Config     Config
-	Components Components
+	Config     ServiceConfig
+	Components ServiceComponents
 	Conn       *grpc.ClientConn
 }
 
-func NewClient(cf Config, cp Components) *Client {
+func NewClient(cf ServiceConfig, cp ServiceComponents) *Client {
 	return &Client{
 		Config:     cf,
 		Components: cp,
