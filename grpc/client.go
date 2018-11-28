@@ -6,12 +6,21 @@ import (
 )
 
 type Client struct {
-	Config     ServiceConfig
-	Components ServiceComponents
+	Config     ClientConfig
+	Components ClientComponents
 	Conn       *grpc.ClientConn
 }
 
-func NewClient(cf ServiceConfig, cp ServiceComponents) *Client {
+type ClientConfig struct {
+	ServiceHost string
+	ServicePort string
+}
+
+type ClientComponents struct {
+	Logger *logs.Logger
+}
+
+func NewClient(cf ClientConfig, cp ClientComponents) *Client {
 	return &Client{
 		Config:     cf,
 		Components: cp,
@@ -21,7 +30,7 @@ func NewClient(cf ServiceConfig, cp ServiceComponents) *Client {
 func (c *Client) Connect() error {
 	var err error
 	c.Conn, err = grpc.Dial(
-		c.Config.Host+":"+c.Config.Port,
+		c.Config.ServiceHost+":"+c.Config.ServicePort,
 		grpc.WithInsecure(),
 	)
 	if err != nil {
