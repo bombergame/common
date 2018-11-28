@@ -30,7 +30,7 @@ func NewTokenManager(key string) *TokenManager {
 	}
 }
 
-func (m *TokenManager) CreateToken(info auth.UserInfo) (string, error) {
+func (m *TokenManager) CreateToken(info auth.TokenInfo) (string, error) {
 	t := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
 		"profile_id":  info.ProfileID,
 		"user_agent":  info.UserAgent,
@@ -39,7 +39,7 @@ func (m *TokenManager) CreateToken(info auth.UserInfo) (string, error) {
 	return t.SignedString(m.key)
 }
 
-func (m *TokenManager) ParseToken(token string) (*auth.UserInfo, error) {
+func (m *TokenManager) ParseToken(token string) (*auth.TokenInfo, error) {
 	invFmtErr := errs.NewInvalidFormatError("wrong token")
 
 	t, err := jwt.Parse(token, func(tk *jwt.Token) (interface{}, error) {
@@ -58,7 +58,7 @@ func (m *TokenManager) ParseToken(token string) (*auth.UserInfo, error) {
 		return nil, invFmtErr
 	}
 
-	info := &auth.UserInfo{}
+	info := &auth.TokenInfo{}
 
 	decoder, err := mapstructure.NewDecoder(&mapstructure.DecoderConfig{
 		Result: info, TagName: "mapstructure",

@@ -13,7 +13,7 @@ func TestTokenManagerUnit(t *testing.T) {
 		t.Error("token manager not created")
 	}
 
-	info := auth.UserInfo{
+	info := auth.TokenInfo{
 		ProfileID:  100,
 		UserAgent:  "some-user-agent",
 		ExpireTime: time.Now().Format(auth.ExpireTimeFormat),

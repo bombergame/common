@@ -21,11 +21,11 @@ func NewTokenManager() *TokenManager {
 	}
 }
 
-func (m *TokenManager) CreateToken(info auth.UserInfo) (string, error) {
+func (m *TokenManager) CreateToken(info auth.TokenInfo) (string, error) {
 	return m.randSeqGen.Next(DefaultKeyLength), nil
 }
 
-func (m *TokenManager) ParseToken(token string) (*auth.UserInfo, error) {
+func (m *TokenManager) ParseToken(token string) (*auth.TokenInfo, error) {
 	err := errors.New("simple token cannot be parsed")
 	return nil, errs.NewServiceError(err)
 }
