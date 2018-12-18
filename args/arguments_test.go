@@ -1,12 +1,13 @@
 package args
 
 import (
+	"os"
 	"regexp"
 	"testing"
 )
 
 func TestGetString(t *testing.T) {
-	osArgs = []string{
+	os.Args = []string{
 		"--flag",
 		"--address=localhost:8080",
 	}
@@ -25,21 +26,17 @@ func TestGetString(t *testing.T) {
 }
 
 func TestGetFlag(t *testing.T) {
-	osArgs = []string{
+	os.Args = []string{
 		"--flag",
 		"--address=localhost:8080",
 	}
 
-	if GetFlag("flag", false) != true {
+	if !GetFlag("flag", false) {
 		t.Error("flag not parsed")
 	}
 
-	if GetFlag("address", false) != false {
+	if GetFlag("address", false) {
 		t.Error("wrong flag parsed")
-	}
-
-	if GetFlag("unknown", false) != false {
-		t.Error("unknown flag parsed")
 	}
 }
 

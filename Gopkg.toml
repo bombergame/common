@@ -1,13 +1,17 @@
-required = ["github.com/mailru/easyjson"]
+required = [
+  "github.com/mailru/easyjson",
+  "golang.org/x/tools/cmd/cover",
+  "github.com/mattn/goveralls"
+]
 
 [[constraint]]
   name = "github.com/sirupsen/logrus"
   version = "1.1.1"
 
-[prune]
-  go-tests = true
-  unused-packages = true
-
 [[constraint]]
   name = "bou.ke/monkey"
   version = "1.0.1"
+
+[prune]
+  go-tests = true
+  unused-packages = true

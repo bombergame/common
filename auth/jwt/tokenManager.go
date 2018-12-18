@@ -1,23 +1,27 @@
 package jwt
 
 import (
+	"time"
+
 	"github.com/bombergame/common/auth"
 	"github.com/bombergame/common/consts"
 	"github.com/bombergame/common/errs"
 	"github.com/bombergame/common/utils"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/mitchellh/mapstructure"
-	"time"
 )
 
 const (
+	//DefaultKeyLength is the default length of encryption key
 	DefaultKeyLength = 64
 )
 
+//TokenManager provides JWT token handlers
 type TokenManager struct {
 	key []byte
 }
 
+//NewTokenManager creates new JWT token manager
 func NewTokenManager(key string) *TokenManager {
 	randSeqGen := utils.NewRandomSequenceGenerator()
 
@@ -30,6 +34,7 @@ func NewTokenManager(key string) *TokenManager {
 	}
 }
 
+//CreateToken creates new JWT token
 func (m *TokenManager) CreateToken(info auth.TokenInfo) (string, error) {
 	t := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
 		"profile_id":  info.ProfileID,
@@ -39,6 +44,7 @@ func (m *TokenManager) CreateToken(info auth.TokenInfo) (string, error) {
 	return t.SignedString(m.key)
 }
 
+//ParseToken returns authorized user info by token
 func (m *TokenManager) ParseToken(token string) (*auth.TokenInfo, error) {
 	invFmtErr := errs.NewInvalidFormatError("wrong token")
 
@@ -64,7 +70,7 @@ func (m *TokenManager) ParseToken(token string) (*auth.TokenInfo, error) {
 		Result: info, TagName: "mapstructure",
 	})
 	if err != nil {
-		return nil, errs.NewServiceError(err)
+		return nil, errs.NewInternalServiceError(err)
 	}
 
 	if err := decoder.Decode(claims); err != nil {

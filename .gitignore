@@ -1,5 +1,8 @@
 ### GoLang ###
 .idea
 
+### executable ###
+/bin/
+
 ### test ###
 coverage.out

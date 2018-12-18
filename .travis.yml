@@ -2,15 +2,19 @@ language: go
 go:
 - "1.11"
 
-before_script:
-- go get golang.org/x/tools/cmd/cover
-- go get github.com/mattn/goveralls
+jobs:
+  include:
+  - stage: build
+    before_script:
+    - export BINDIR=${GOPATH}/bin
+    - curl -L https://git.io/vp6lP | sh
+    script:
+    - make check
 
-script:
-- make test
-
-after_success:
-- ${GOPATH}/bin/goveralls -coverprofile=./coverage.out -service=travis-ci
-
-after_script:
-- make clean
+  - stage: build
+    script:
+    - make test
+    after_success:
+    - ${GOPATH}/bin/goveralls -coverprofile=./coverage.out -service=travis-ci
+    after_script:
+    - make clean

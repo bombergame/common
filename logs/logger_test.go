@@ -1,10 +1,11 @@
 package logs
 
 import (
-	"bou.ke/monkey"
-	"github.com/sirupsen/logrus"
 	"reflect"
 	"testing"
+
+	"bou.ke/monkey"
+	"github.com/sirupsen/logrus"
 )
 
 func TestNewLogger(t *testing.T) {
@@ -49,7 +50,7 @@ func TestNewLogger(t *testing.T) {
 		t.Error("fatal method not called")
 	}
 
-	if logger.AsLogrusLogger() == nil {
-		t.Error("logger cast failed")
+	if logger.LogrusLogger() == nil {
+		t.Error("could not cast to logrus logger")
 	}
 }

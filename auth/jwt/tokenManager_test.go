@@ -1,12 +1,13 @@
 package jwt
 
 import (
-	"github.com/bombergame/common/auth"
-	"github.com/bombergame/common/consts"
 	"math/rand"
 	"strconv"
 	"testing"
 	"time"
+
+	"github.com/bombergame/common/auth"
+	"github.com/bombergame/common/consts"
 )
 
 func TestTokenManagerUnit(t *testing.T) {
@@ -35,7 +36,7 @@ func TestTokenManagerUnit(t *testing.T) {
 		t.Error("tokens differ")
 	}
 
-	pInfo, err = manager.ParseToken("some_invalid_token")
+	_, err = manager.ParseToken("some_invalid_token")
 	if err == nil {
 		t.Error("invalid token parsed")
 	}

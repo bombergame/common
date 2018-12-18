@@ -4,6 +4,7 @@ import (
 	"os"
 )
 
+//GetVar returns environment variable value
 func GetVar(name, defaultValue string) string {
 	v := os.Getenv(name)
 	if v == "" {
@@ -12,8 +13,11 @@ func GetVar(name, defaultValue string) string {
 	return v
 }
 
+//SetVar sets environment variable value and returns previous value
 func SetVar(name, value string) string {
 	v := os.Getenv(name)
-	os.Setenv(name, value)
+	if err := os.Setenv(name, value); err != nil {
+		panic(err)
+	}
 	return v
 }
