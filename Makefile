@@ -1,7 +1,8 @@
 all: test
 
 check:
-	gometalinter --enable-all --enable-gc --vendor --line-length=100 --deadline=1000s ./...
+	gometalinter --enable-all --enable-gc --vendor --line-length=100 \
+		--deadline=1000s --exclude=.*_easyjson\.go ./...
 
 generate:
 	go generate ./...
