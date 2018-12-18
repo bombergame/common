@@ -217,6 +217,8 @@
     "github.com/grpc-ecosystem/go-grpc-middleware/recovery",
     "github.com/grpc-ecosystem/go-grpc-middleware/tags",
     "github.com/mailru/easyjson",
+    "github.com/mailru/easyjson/jlexer",
+    "github.com/mailru/easyjson/jwriter",
     "github.com/mattn/goveralls",
     "github.com/mitchellh/mapstructure",
     "github.com/sirupsen/logrus",
