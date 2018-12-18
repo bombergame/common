@@ -12,10 +12,10 @@ required = [
   name = "bou.ke/monkey"
   version = "1.0.1"
 
-[prune]
-  go-tests = true
-  unused-packages = true
-
 [[constraint]]
   name = "github.com/hashicorp/consul"
   version = "1.4.0"
+
+[prune]
+  go-tests = true
+  unused-packages = true
