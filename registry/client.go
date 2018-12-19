@@ -26,7 +26,11 @@ func NewClient(cf Config) *Client {
 		config: cf,
 		client: func() *consulapi.Client {
 			c, err := consulapi.NewClient(
-				consulapi.DefaultConfig(),
+				func() *consulapi.Config {
+					config := consulapi.DefaultConfig()
+					config.Address = cf.RegistryAddress
+					return config
+				}(),
 			)
 			if err != nil {
 				panic(err)
