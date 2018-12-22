@@ -5,6 +5,8 @@ import (
 	"net/http"
 	"strconv"
 	"strings"
+
+	"github.com/bombergame/common/auth"
 )
 
 //WithRecover recovers after panic in request handler
@@ -57,6 +59,38 @@ func (srv *Service) WithAuth(h http.Handler) http.Handler {
 			info, err := srv.components.AuthManager.GetProfileInfo(authToken, userAgent)
 			if err != nil {
 				srv.WriteErrorWithBody(w, err)
+				return
+			}
+
+			srv.setAuthProfileID(r, info.ID)
+			h.ServeHTTP(w, r)
+		},
+	)
+}
+
+//WithOptionalAuth parses user profile id from auth token
+//if user is not authorized, profile id is set to -1
+func (srv *Service) WithOptionalAuth(h http.Handler) http.Handler {
+	return http.HandlerFunc(
+		func(w http.ResponseWriter, r *http.Request) {
+			userAgent, err := srv.ReadUserAgent(r)
+			if err != nil {
+				srv.setAuthProfileID(r, auth.NotAuthorizedProfileID)
+				h.ServeHTTP(w, r)
+				return
+			}
+
+			authToken, err := srv.ReadAuthToken(r)
+			if err != nil {
+				srv.setAuthProfileID(r, auth.NotAuthorizedProfileID)
+				h.ServeHTTP(w, r)
+				return
+			}
+
+			info, err := srv.components.AuthManager.GetProfileInfo(authToken, userAgent)
+			if err != nil {
+				srv.setAuthProfileID(r, auth.NotAuthorizedProfileID)
+				h.ServeHTTP(w, r)
 				return
 			}
 
