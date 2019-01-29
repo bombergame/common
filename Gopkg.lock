@@ -50,12 +50,12 @@
   version = "v1.0.0"
 
 [[projects]]
-  digest = "1:bfc483a051d3c7185ebeaa41b5bb67a4f76e742217bcaeab5661cc4b1320f392"
+  digest = "1:1b9c99915ccf7df1e6085259ebf137a7b11fab87f47c382b3ec7a7ab51fbe2d8"
   name = "github.com/hashicorp/consul"
   packages = ["api"]
   pruneopts = "UT"
-  revision = "0bddfa23a2ebe3c0773d917fc104f53d74f7a5ec"
-  version = "v1.4.0"
+  revision = "c97c712e96e0e53308054d5e1180289fe02dce38"
+  version = "v1.4.2"
 
 [[projects]]
   digest = "1:f47d6109c2034cb16bd62b220e18afd5aa9d5a1630fe5d937ad96a4fb7cbb277"
