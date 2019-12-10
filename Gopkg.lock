@@ -2,12 +2,12 @@
 
 
 [[projects]]
-  digest = "1:17131c6158c724a12a6249bf4e28c239357695cb15ffccb6bc3f246d95e04f09"
+  digest = "1:3f851f0a546801614319eb0a6c4b530e02e1640408e780f4b3a8d79c6eea1ece"
   name = "bou.ke/monkey"
   packages = ["."]
   pruneopts = "UT"
-  revision = "bdf6dea004c6fd1cdf4b25da8ad45a606c09409a"
-  version = "v1.0.1"
+  revision = "c597d8a6b9a52e9f7521b7e8913453b4745820f7"
+  version = "v1.0.2"
 
 [[projects]]
   digest = "1:76dc72490af7174349349838f2fe118996381b31ea83243812a97e5a0fd5ed55"
