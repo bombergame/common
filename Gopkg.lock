@@ -18,6 +18,14 @@
   version = "v3.2.0"
 
 [[projects]]
+  digest = "1:1bf705ef0cc4bafbfdead4cadfa541624d034eb922b82440cbb631bb84b9a2c0"
+  name = "github.com/fatih/color"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "cf452350f542986d689fb53db88dbb0212f141db"
+  version = "v1.12.0"
+
+[[projects]]
   branch = "master"
   digest = "1:682e7e3789287aba88b1d2394d7770517b531ad2c5a17996cc8259a4668c9d15"
   name = "github.com/golang/protobuf"
@@ -50,12 +58,12 @@
   version = "v1.0.0"
 
 [[projects]]
-  digest = "1:bfc483a051d3c7185ebeaa41b5bb67a4f76e742217bcaeab5661cc4b1320f392"
+  digest = "1:0e6fceb16bc1182791075650d96ac5fb8b1daa9eb6fddfcb253d2aa910fa191d"
   name = "github.com/hashicorp/consul"
   packages = ["api"]
   pruneopts = "UT"
-  revision = "0bddfa23a2ebe3c0773d917fc104f53d74f7a5ec"
-  version = "v1.4.0"
+  revision = "bbcbb733b416acd7066fe4e0157c58678e4ba1e4"
+  version = "v1.9.6"
 
 [[projects]]
   digest = "1:f47d6109c2034cb16bd62b220e18afd5aa9d5a1630fe5d937ad96a4fb7cbb277"
@@ -64,6 +72,14 @@
   pruneopts = "UT"
   revision = "e8ab9daed8d1ddd2d3c4efba338fe2eeae2e4f18"
   version = "v0.5.0"
+
+[[projects]]
+  digest = "1:27f4a0cbc7a205188982853fec30832361b1acce1a5fccd08ed65ef97d8ce15d"
+  name = "github.com/hashicorp/go-hclog"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "1700dc18d11b3c80b1a0a03992dd02dad4c4e145"
+  version = "v0.16.1"
 
 [[projects]]
   branch = "master"
@@ -101,6 +117,22 @@
   ]
   pruneopts = "UT"
   revision = "60711f1a8329503b04e1c88535f419d0bb440bff"
+
+[[projects]]
+  digest = "1:304d25ecc3f4ca39f894c959254d3f5fc6176276ccf1f874ded0cd441e2f964f"
+  name = "github.com/mattn/go-colorable"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "2e1b0c1546e0173c0907cf05c67b8ba29ed8b4d1"
+  version = "v0.1.8"
+
+[[projects]]
+  digest = "1:f0d049b77e8f5a23aa89750a9f0da6417dc3abf0b7f3f35a161c1c5eb9f926a4"
+  name = "github.com/mattn/go-isatty"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "8b0c6d82fa8980f9bff874afff66860a0c3e9c5c"
+  version = "v0.0.13"
 
 [[projects]]
   digest = "1:d1f70995feb8132ca8e99b8bba29823c3273f68c239d9ecd93fa5442a56d546f"
